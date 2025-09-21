@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/authSlice";
 import type { AppDispatch } from "../store/store";
 
@@ -21,7 +21,7 @@ export default function Login() {
 
     dispatch(login({ name, email }));
 
-    // Example: after login, send user to dashboard
+    // After login, redirect to dashboard
     navigate("/dashboard");
   };
 
@@ -67,6 +67,17 @@ export default function Login() {
           Log In
         </button>
       </form>
+
+      {/* Sign up link */}
+      <p className="mt-6 text-center text-sm text-gray-600">
+        Don’t have an account?{" "}
+        <Link
+          to="/signup"
+          className="text-blue-600 hover:text-blue-800 font-medium"
+        >
+          Sign up
+        </Link>
+      </p>
     </div>
   );
 }
